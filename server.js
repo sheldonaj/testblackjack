@@ -4,6 +4,7 @@ var http = require('http'),
     blackjack = require('./lib/blackjack');
 
 var Server = {}
+var port = process.env.PORT || 3000
 
 Server.getGame = function (socket, data, callback) {
     socket.get('game', function (err, game) {
@@ -76,7 +77,7 @@ Server.init = function () {
             res.writeHead(200, { 'Content-Type': contentType });
             res.end(data, 'utf-8');
         });
-    }).listen(3000);
+    }).listen(port);
 
     var io = require('socket.io').listen(httpServer);
     Server.registerSocketIO(io);
