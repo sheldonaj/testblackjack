@@ -145,7 +145,8 @@ App.registerServerActions = function () {
 }
 
 App.init = function () {
-    var socket = io.connect('http://localhost:3000');
+    var host = location.origin;
+    var socket = io.connect(host);
     App.socket = socket;
     App.registerClientActions();
     App.registerServerActions();
